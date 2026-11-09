@@ -1,0 +1,6 @@
+model_names:
+  - gpt-oss-120b
+  - gpt-oss-20b
+  - gemma-4-31b-it
+  - gemma-4-26b-a4b-it
+code_agent: {}

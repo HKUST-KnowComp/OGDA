@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ogda"
+version = "0.1.0"
+description = "Agents build and verify the Ontology of one data Lake"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2",
+    "pandas>=2",
+    "pyarrow>=14",
+    "duckdb>=1",
+    "openpyxl>=3",
+    "PyYAML>=6",
+    "scipy>=1.11",
+    "statsmodels>=0.14",
+    "litellm>=1",
+    "openai>=1",
+    "smolagents==1.26.0",
+    "jsonschema>=4.26.0",
+    "lxml>=6.1.3",
+    "geopandas>=1.2.0",
+    "shapely>=2.2.0",
+    "pyogrio>=0.13.0",
+    "pyproj>=3.7.2",
+    "cdflib>=1.3.16",
+    "sgp4>=2.27",
+    "skyfield>=1.55",
+    "pymsis>=0.13.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-xdist>=3.8.0",
+]
+eval = [
+    "click>=8.5.0",
+    "nltk>=3.10.4",
+    "ollama>=0.6.3",
+    "rouge-score>=0.1.2",
+    "sympy>=1.14.0",
+    "tenacity>=9.2.1",
+    "typeguard>=4.6.0",
+    "untruncate-json>=1.1.0",
+]
+
+[tool.uv]
+default-groups = ["dev", "eval"]
+
+[project.scripts]
+ogda = "ogda.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ogda*"]
+
+[tool.setuptools.package-data]
+ogda = ["models/*.yaml", "ossie_schemas/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -n auto"

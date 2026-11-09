@@ -1,0 +1,35 @@
+# Copy to config.yaml and replace the provider, model, endpoint and credential reference.
+llm:
+  model: provider/model-name
+  base_url: https://example.invalid/v1
+  api: chat_completions
+  api_key_env: PROVIDER_API_KEY
+  max_output_tokens: 3000
+  timeout_seconds: 120
+  # Use the provider-supported off setting; all generation roles inherit it.
+  reasoning_effort: "none"
+  roles:
+    proposer: {}
+    verifier: {}
+    experience: {}
+    data_agent: {}
+
+# These are the core method defaults.
+construction:
+  max_passes: 3
+  max_tokens: 2000000
+  files_per_visit: 8
+  max_claims_per_visit: 20
+  agent:
+    max_steps: 20
+    cell_timeout_seconds: 30
+    memory_mb: 4096
+    max_output_chars: 20000
+
+data_agent:
+  max_tokens: null
+  agent:
+    max_steps: 40
+    cell_timeout_seconds: 30
+    memory_mb: 4096
+    max_output_chars: 20000

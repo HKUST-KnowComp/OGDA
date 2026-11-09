@@ -1,0 +1,10 @@
+# Copy to evaluator.yaml; the native evaluator requires an OpenAI-compatible provider.
+provider: openai
+model: judge-model-name
+base_url: https://example.invalid/v1
+api_key_env: EVALUATOR_API_KEY
+roles:
+  evaluator: {}
+# Add provider-supported reasoning and request options here or in roles.evaluator.
+# model_kwargs:
+#   max_tokens: 32768

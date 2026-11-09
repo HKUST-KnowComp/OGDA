@@ -1,0 +1,34 @@
+# LLM and run settings for ogda.
+# Copy this file to config/config.yaml and fill in the three llm fields.
+# Prefer api_key_env to keep credentials out of configuration files.
+
+llm:
+  model: openai/your-model-id          # Model id your endpoint expects
+  base_url: https://your-endpoint/v1   # OpenAI-compatible base URL
+  api_key: your-api-key                # Or remove this line and set api_key_env: PROVIDER_API_KEY
+  # max_output_tokens: 8192
+  # timeout_seconds: 120
+
+  # Optional per-role overrides; any key above can be changed per role.
+  # roles:
+  #   proposer:   {model: openai/another-model}
+  #   verifier:   {model: openai/another-model}
+  #   data_agent: {model: openai/another-model}
+  #   evaluator:  {model: openai/your-judge-model}   # judge for scripts/benchmark.py --stage evaluate
+
+construction:
+  max_passes: 20           # Concept-layer visits
+  max_tokens: 2000000      # Total token cap for all construction model calls
+  files_per_visit: 8
+  max_datasets_per_visit: 20   # dataset Claims in one induction visit; concept and relationship Claims do not count
+  concepts_per_visit: 30   # Concepts reviewed in one concept-layer visit
+  check_rows: 100000       # Rows read per Dataset by the data checks
+  agent:
+    max_steps: 20
+    cell_timeout_seconds: 30
+    memory_mb: 4096
+    max_output_chars: 20000
+
+data_agent:
+  max_tokens: null         # Optional total token cap per Task
+  agent: {max_steps: 20}

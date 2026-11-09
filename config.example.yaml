@@ -1,0 +1,33 @@
+# Copy to config.yaml and fill in your provider settings.
+# Set the environment variable below; do not put credentials in this example.
+llm:
+  model: provider/model-name
+  base_url: https://example.invalid/v1
+  api: chat_completions
+  api_key_env: PROVIDER_API_KEY
+  max_output_tokens: 3000
+  timeout_seconds: 120
+  # Configure provider-supported reasoning options explicitly before a run.
+  # Empty roles inherit the shared settings.
+  roles:
+    proposer: {}
+    verifier: {}
+    experience: {}
+    data_agent: {}
+
+# Example settings matching the core construction defaults.
+construction:
+  max_passes: 3
+  max_tokens: 2000000
+  files_per_visit: 8
+  max_claims_per_visit: 20
+  agent:
+    max_steps: 20
+    cell_timeout_seconds: 30
+    memory_mb: 4096
+    max_output_chars: 20000
+
+data_agent:
+  max_tokens: null
+  agent:
+    max_steps: 40
